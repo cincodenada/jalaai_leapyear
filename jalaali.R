@@ -19,9 +19,7 @@ linecol = "blue";
 scalecol = "gray30";
 scalesize = 0.3;
 
-#png('offset.png',w=1000,h=500);
-svg('offset.svg');
-ggplot() +
+p = ggplot() +
     geom_line(data=diff,aes(year,hrs),color=linecol,size=0.25) + geom_point(data=diff,aes(year,hrs),color=linecol,shape=19, size=0.9) +
     geom_segment(data=cycles, aes(x=start,xend=end,y=ypos,yend=ypos), color=scalecol, size=scalesize) +
     geom_segment(data=cycles, aes(x=start,xend=start,y=ypos+ticksize,yend=ypos), color=scalecol, size=scalesize) +
@@ -34,13 +32,29 @@ ggplot() +
         labels = function(y) { paste(y,"\n(",y+621,")\n",sep="") }
     ) +
     theme_bw() +
-    labs(title=expression(bold("Jalaai Leap Years\n")), x="Jalaai Year\n(Gregorian Year)", y="Difference Between Spring Equniox and Beginning of Year (hours)\n") +
+    labs(
+        title=expression(
+            atop(
+                bold("Leap Shifting of the Jalaali Calendar"),
+                atop(italic("Difference between Spring Equniox and beginning of the year"),"")
+            )
+        ),
+        x=expression(atop("Jalaali Year",atop("(Gregorian Year)",""))),
+        y="Difference (hours)"
+    ) +
     theme(
         text = element_text(size=8),
+        title = element_text(size=12),
+        axis.title = element_text(size=9),
         aspect.ratio = 1/2.5,
         panel.grid.major = element_line(color="gray60"),
         panel.grid.minor = element_line(color="gray90",size=0.1),
         panel.border = element_rect(color="black"),
         plot.margin = unit(c(24,12,12,12), "points")
     );
+png('offset.png',w=1000,h=500);
+p;
+dev.off;
+svg('offset.svg');
+p;
 dev.off();
