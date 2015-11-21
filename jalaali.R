@@ -34,7 +34,7 @@ ggplot() +
         labels = function(y) { paste(y,"\n(",y+621,")\n",sep="") }
     ) +
     theme_bw() +
-    labs(title=expression(bold("Jalaai Leap Years\n")), x="Jalaai Year\n(Gregorian Year)", y="Diff Between Solstice and New Year (hours)\n") +
+    labs(title=expression(bold("Jalaai Leap Years\n")), x="Jalaai Year\n(Gregorian Year)", y="Difference Between Spring Equniox and Beginning of Year (hours)\n") +
     theme(
         text = element_text(size=8),
         aspect.ratio = 1/2.5,
