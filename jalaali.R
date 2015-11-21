@@ -36,7 +36,7 @@ p = ggplot() +
         title=expression(
             atop(
                 bold("Leap Shifting of the Jalaali Calendar"),
-                atop(italic("Difference between Spring Equniox and beginning of the year"),"")
+                atop(italic("Difference between spring equinox and beginning of year"),"")
             )
         ),
         x=expression(atop("Jalaali Year",atop("(Gregorian Year)",""))),
